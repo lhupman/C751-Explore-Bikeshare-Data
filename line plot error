@@ -1,0 +1,120 @@
+# create an empty list to store the unique days of the week
+days_of_week <- c()
+# create an empty list to store the unique days of the week
+days_of_week <- c()
+chi
+
+# convert the timestamp column to a date time object
+ny$Start.Time <- ymd_hms(ny$Start.Time)
+wash$Start.Time <- ymd_hms(wash$Start.Time)
+chi$Start.Time <- ymd_hms(chi$Start.Time)
+chi
+
+# create a new column with the day of the week for each row
+ny$day_of_week <- wday(ny$Start.Time, label = TRUE)
+wash$day_of_week <- wday(wash$Start.Time, label = TRUE)
+chi$day_of_week <- wday(chi$Start.Time, label = TRUE)
+chi
+
+# convert the day of the week column to a factor for easier data manipulation
+ny$day_of_week <- factor(ny$day_of_week, levels = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))
+wash$day_of_week <- factor(wash$day_of_week, levels = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))
+chi$day_of_week <- factor(chi$day_of_week, levels = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))
+
+# count the number of times each day of the week appears in the data set
+ny_weekday_count <- table(ny$day_of_week)
+wash_weekday_count <- table(wash$day_of_week)
+chi_weekday_count <- table(chi$day_of_week)
+weekday_count <- rbind(ny_weekday_count, wash_weekday_count, chi_weekday_count)
+.matrix
+weekday_count_df <- as.data.frame.matrix(weekday_count)
+​
+​
+weekday_count_df
+Mon	Tue	Wed	Thu	Fri	Sat	Sun
+ny_weekday_count	7570	7898	9632	8729	8168	6176	6597
+wash_weekday_count	11721	13288	14212	13204	12926	12133	11566
+chi_weekday_count	1302	1292	1236	1254	1285	1150	1111
+qplot(x = c(days_of_week), ny_weekday_count, data = weekday_count_df, geom = "line", color = "red", xlab = "Days of the Week", ylab = "City Weekday Counts", main = "Bike Rentals by Day of the Week") +
+    geom_line(aes(x, wash_weekday_count), color = "blue") +
+    geom_line(aes(x, chi_weekday_count), color = "green")
+​
+
+Don't know how to automatically pick scale for object of type table. Defaulting to continuous.
+ERROR while rich displaying an object: Error: Aesthetics must be either length 1 or the same as the data (3): x, y
+
+Traceback:
+1. FUN(X[[i]], ...)
+2. tryCatch(withCallingHandlers({
+ .     if (!mime %in% names(repr::mime2repr)) 
+ .         stop("No repr_* for mimetype ", mime, " in repr::mime2repr")
+ .     rpr <- repr::mime2repr[[mime]](obj)
+ .     if (is.null(rpr)) 
+ .         return(NULL)
+ .     prepare_content(is.raw(rpr), rpr)
+ . }, error = error_handler), error = outer_handler)
+3. tryCatchList(expr, classes, parentenv, handlers)
+4. tryCatchOne(expr, names, parentenv, handlers[[1L]])
+5. doTryCatch(return(expr), name, parentenv, handler)
+6. withCallingHandlers({
+ .     if (!mime %in% names(repr::mime2repr)) 
+ .         stop("No repr_* for mimetype ", mime, " in repr::mime2repr")
+ .     rpr <- repr::mime2repr[[mime]](obj)
+ .     if (is.null(rpr)) 
+ .         return(NULL)
+ .     prepare_content(is.raw(rpr), rpr)
+ . }, error = error_handler)
+7. repr::mime2repr[[mime]](obj)
+8. repr_text.default(obj)
+9. paste(capture.output(print(obj)), collapse = "\n")
+10. capture.output(print(obj))
+11. evalVis(expr)
+12. withVisible(eval(expr, pf))
+13. eval(expr, pf)
+14. eval(expr, pf)
+15. print(obj)
+16. print.ggplot(obj)
+17. ggplot_build(x)
+18. ggplot_build.ggplot(x)
+19. by_layer(function(l, d) l$compute_aesthetics(d, plot))
+20. f(l = layers[[i]], d = data[[i]])
+21. l$compute_aesthetics(d, plot)
+22. f(..., self = self)
+23. check_aesthetics(evaled, n)
+24. stop("Aesthetics must be either length 1 or the same as the data (", 
+  .     n, "): ", paste(names(which(!good)), collapse = ", "), call. = FALSE)
+
+
+​
+​
+Summary of your question 1 results goes here.
+
+Question 2
+Your question 2 goes here.
+
+# Your solution code goes here
+​
+​
+Summary of your question 2 results goes here.
+
+Question 3
+Your question 3 goes here.
+
+# Your solution code goes here
+​
+​
+Summary of your question 3 results goes here.
+
+Finishing Up
+Congratulations! You have reached the end of the Explore Bikeshare Data Project. You should be very proud of all you have accomplished!
+
+Tip: Once you are satisfied with your work here, check over your report to make sure that it is satisfies all the areas of the rubric.
+
+Directions to Submit
+Before you submit your project, you need to create a .html or .pdf version of this notebook in the workspace here. To do that, run the code cell below. If it worked correctly, you should get a return code of 0, and you should see the generated .html file in the workspace directory (click on the orange Jupyter icon in the upper left).
+
+Alternatively, you can download this report as .html via the File > Download as submenu, and then manually upload it into the workspace directory by clicking on the orange Jupyter icon in the upper left, then using the Upload button.
+
+Once you've done this, you can submit your project by clicking on the "Submit Project" button in the lower right here. This will create and submit a zip file with this .ipynb doc and the .html or .pdf version you created. Congratulations!
+
+system('python -m nbconvert Explore_bikeshare_data.ipynb')

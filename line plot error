@@ -1,3 +1,38 @@
+# load the tidyverse library for package consistency
+# load the lubridate library for managing dates and times
+# load the dplyr library for data manipulation
+# load the ggplot2 library for data visualization
+library(tidyverse)
+library(lubridate)
+library(dplyr)
+library(ggplot2)
+​
+​
+
+# read in the bicycle data
+ny = read.csv('new_york_city.csv')
+wash = read.csv('washington.csv')
+chi = read.csv('chicago.csv')
+
+# look at the first few rows from each data set
+head(ny)
+head(wash)
+head(chi)
+
+
+# check the summaries of each data set
+sapply(list("Chicago" = chi, "New York" = ny, "Washington" = wash), summary)
+# check the datatypes in each data set
+str(ny)
+str(wash)
+str(chi)
+
+# check for null values in each data set
+is.null(ny)
+is.null(wash)
+is.null(chi)
+
+
 # create an empty list to store the unique days of the week
 days_of_week <- c()
 # create an empty list to store the unique days of the week
